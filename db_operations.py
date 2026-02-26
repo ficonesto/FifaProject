@@ -117,11 +117,12 @@ def promjeni_status_igraca(igrac_id, novi_status):
 # ────────────────────────────────────────────────
 
 def dodaj_klub(naziv, korisnik_id, aktivan=True):
-    return db_exec(
+    success = db_exec(
         "INSERT INTO klubovi (naziv, korisnik_id, aktivan) VALUES (%s, %s, %s)",
         (naziv, int(korisnik_id), aktivan),
         commit=True
     )
+    return success, "Klub dodan!"
 
 
 def dohvati_sve_klubove(korisnik_id):
